@@ -9,13 +9,15 @@
     function redirect() {
       var ua = navigator.userAgent || navigator.vendor || window.opera;
 
-      var ios = "https://apps.apple.com/kr/app/id6759692227";
+      var ios = "https://apps.apple.com/kr/app/id6759699227";
       var android = "https://play.google.com/store/apps/details?id=kr.co.dropstudio.plop&pcampaignid=web_share";
 
       if (/android/i.test(ua)) {
         window.location.replace(android);
       } else if (/iPhone|iPad|iPod/i.test(ua)) {
         window.location.replace(ios);
+      } else {
+        document.getElementById("desktop-fallback").style.display = "block";
       }
     }
 
@@ -26,35 +28,45 @@
 
   <style>
     body {
-      margin:0;
-      background:#111;
-      color:#fff;
-      font-family:sans-serif;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      height:100vh;
-      text-align:center;
+      margin: 0;
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
     }
+
+    #desktop-fallback > div {
+      max-width: 420px;
+      width: 100%;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
     a {
-      display:block;
-      margin:10px;
-      padding:14px;
-      border-radius:10px;
-      background:#fff;
-      color:#111;
-      text-decoration:none;
-      font-weight:bold;
+      display: block;
+      margin: 10px 0;
+      padding: 14px;
+      border-radius: 10px;
+      background: #fff;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
-  <div>
-    <h1>PLOP!</h1>
-    <p>자동으로 이동 중입니다...</p>
-    <a href="https://apps.apple.com/kr/app/id여기">App Store</a>
-    <a href="https://play.google.com/store/apps/details?id=여기">Google Play</a>
+  <div id="desktop-fallback" style="display:none;">
+    <div>
+      <h1>PLOP!</h1>
+      <p>모바일에서 접속하면 앱스토어 또는 플레이스토어로 자동 이동합니다.</p>
+      <a href="https://apps.apple.com/kr/app/id6759699227">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=kr.co.dropstudio.plop&pcampaignid=web_share">Google Play</a>
+    </div>
   </div>
 </body>
 </html>
